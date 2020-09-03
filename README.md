@@ -11,7 +11,7 @@ Metabase can be run using the default H2 database backend but recommend using Po
 - Clone this repository
 
 ## Configuration
-- Copy the .env.sample to .env and update the values as required with your desired credentials for the postgres and metabase database credentials
+- Copy the sample.env-file to .env and update the values as required with your desired credentials for the postgres and metabase database credentials
 
 ## Usage
 
@@ -23,6 +23,6 @@ Will load the environment up as a daemon.
 
 You can then hit http://yourhost:3001 in your browser. Run through the setup to create a local metabase admin.
 
-As part of the setup you can choose to add a database server 
+As part of the setup you can choose to add a database server to connect through to do analysis - or skip it and add via the admin later
 
 > Note that you can change the ports in the config file as required if you do not want to access on 3001, i.e 443/80 etc
