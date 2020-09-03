@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: "analytics_postgres"
+    restart: "always"
+    image: postgres
+    env_file: 
+      - .env
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+      - ./services/postgres/:/docker-entrypoint-initdb.d/
+    ports:
+      - 5432:5432
+
+  metabase:
+    container_name: "analytics_metabase"
+    restart: "always"
+    depends_on:
+      - postgres
+    image: metabase/metabase
+    environment: 
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: ${METABASE_DBNAME}
+      MB_DB_PORT: 5432
+      MB_DB_USER: ${METABASE_DBUSER}
+      MB_DB_PASS: ${METABASE_DBPASSWORD}
+      MB_DB_HOST: postgres
+      MB_ENCRYPTION_SECRET_KEY: ${METABASE_ENCRYPTIONKEY}
+    ports:
+      - 3001:3000
+
+volumes:
+  postgres_volume:
+
+
+    
