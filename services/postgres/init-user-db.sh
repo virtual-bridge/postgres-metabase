@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-echo "Creating database, user and assignment for: $METABASE_DBUSER with password $METABASE_DBPASSWORD onto $METABASE_DBNAME"
+echo "Creating database, user and assignment for: $METABASE_DBUSER onto $METABASE_DBNAME"
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
     CREATE USER $METABASE_DBUSER WITH
     LOGIN
